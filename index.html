@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Next Logistics — Stock & Job Tracking</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --concrete:#2B2E2C;
+    --bone:#EDEAE2;
+    --site-orange:#E85C2B;
+    --timber:#B08968;
+    --steel:#3E5C68;
+    --ink:#1C1C1A;
+    --paper:#F7F4EC;
+    --line: rgba(28,28,26,0.14);
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'Inter', -apple-system, sans-serif;
+    line-height:1.55;
+  }
+  h1,h2,h3{
+    font-family:'Oswald', sans-serif;
+    text-transform:uppercase;
+    letter-spacing:0.02em;
+    margin:0;
+  }
+  .mono{
+    font-family:'IBM Plex Mono', monospace;
+    letter-spacing:0.02em;
+  }
+  a{color:inherit;}
+
+  /* Top bar */
+  .topbar{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:22px 6vw;
+    border-bottom:1px solid var(--line);
+  }
+  .topbar .mark{
+    font-family:'Oswald', sans-serif;
+    font-weight:700;
+    font-size:18px;
+    text-transform:uppercase;
+    letter-spacing:0.04em;
+  }
+  .topbar .mark span{color:var(--site-orange);}
+  .topbar nav a{
+    text-decoration:none;
+    font-size:13px;
+    font-weight:500;
+    margin-left:28px;
+    color:var(--concrete);
+    opacity:0.75;
+  }
+  .topbar nav a:hover{opacity:1;}
+
+  /* Hero */
+  .hero{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding:9vh 6vw 8vh;
+    background:
+      linear-gradient(180deg, transparent 0%, transparent 100%);
+    position:relative;
+  }
+  .tag{
+    background:var(--bone);
+    border:1.5px solid var(--concrete);
+    border-radius:6px;
+    padding:52px 56px 44px;
+    max-width:640px;
+    width:100%;
+    position:relative;
+    box-shadow: 6px 6px 0 var(--concrete);
+  }
+  .tag::before{
+    /* punch hole */
+    content:"";
+    position:absolute;
+    top:26px;
+    left:26px;
+    width:16px;
+    height:16px;
+    border-radius:50%;
+    background:var(--paper);
+    border:1.5px solid var(--concrete);
+  }
+  .tag-eyebrow{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:12px;
+    color:var(--steel);
+    padding-left:44px;
+    margin-bottom:18px;
+    display:block;
+  }
+  .tag h1{
+    font-size:clamp(34px,5vw,52px);
+    line-height:1.05;
+    color:var(--concrete);
+  }
+  .tag h1 em{
+    font-style:normal;
+    color:var(--site-orange);
+  }
+  .tag p.sub{
+    font-family:'Inter', sans-serif;
+    text-transform:none;
+    font-size:16.5px;
+    color:var(--ink);
+    opacity:0.82;
+    margin-top:16px;
+    max-width:46ch;
+  }
+  .tag .stamp-row{
+    margin-top:32px;
+    display:flex;
+    gap:10px;
+    flex-wrap:wrap;
+  }
+  .stamp{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:11.5px;
+    border:1.2px dashed var(--concrete);
+    padding:6px 12px;
+    border-radius:3px;
+    color:var(--concrete);
+    opacity:0.8;
+  }
+
+  /* Section shell */
+  section{
+    padding:8vh 6vw;
+    max-width:1080px;
+    margin:0 auto;
+  }
+  .section-head{
+    display:flex;
+    align-items:baseline;
+    gap:14px;
+    margin-bottom:44px;
+  }
+  .section-head .num{
+    font-family:'IBM Plex Mono', monospace;
+    color:var(--site-orange);
+    font-size:14px;
+  }
+  .section-head h2{
+    font-size:26px;
+    color:var(--concrete);
+  }
+
+  /* Feature tags grid */
+  .grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:22px;
+  }
+  .ftag{
+    background:var(--bone);
+    border:1.2px solid var(--concrete);
+    border-radius:5px;
+    padding:26px 24px 22px;
+    position:relative;
+    transition:transform 0.18s ease, box-shadow 0.18s ease;
+  }
+  .ftag:hover{
+    transform:translateY(-3px);
+    box-shadow:4px 5px 0 var(--concrete);
+  }
+  .ftag .fnum{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:11.5px;
+    color:var(--steel);
+    display:block;
+    margin-bottom:14px;
+  }
+  .ftag h3{
+    font-size:17px;
+    color:var(--concrete);
+    margin-bottom:10px;
+  }
+  .ftag p{
+    font-size:14.5px;
+    margin:0;
+    opacity:0.82;
+  }
+
+  /* Who it's for strip */
+  .strip{
+    background:var(--concrete);
+    color:var(--paper);
+  }
+  .strip section{padding:7vh 6vw;}
+  .strip .section-head h2{color:var(--paper);}
+  .rolewrap{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:28px;
+  }
+  .role{
+    border:1px solid rgba(247,244,236,0.25);
+    border-radius:5px;
+    padding:24px;
+  }
+  .role h3{
+    color:var(--timber);
+    font-size:16px;
+    margin-bottom:10px;
+  }
+  .role p{
+    font-size:14.5px;
+    color:rgba(247,244,236,0.82);
+    margin:0;
+  }
+
+  /* Footer */
+  footer{
+    padding:5vh 6vw 6vh;
+    border-top:1px solid var(--line);
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    flex-wrap:wrap;
+    gap:14px;
+  }
+  footer .mono{
+    font-size:12px;
+    opacity:0.6;
+  }
+  footer a{
+    font-size:13px;
+    text-decoration:underline;
+    text-underline-offset:3px;
+  }
+
+  @media (max-width:760px){
+    .grid{grid-template-columns:1fr;}
+    .rolewrap{grid-template-columns:1fr;}
+    .tag{padding:38px 26px 32px;}
+    .topbar nav a{margin-left:16px;}
+  }
+</style>
+</head>
+<body>
+
+  <div class="topbar">
+    <div class="mark">NEXT<span>·</span>LOGISTICS</div>
+    <nav>
+      <a href="#what">What it does</a>
+      <a href="#who">Who it's for</a>
+      <a href="support.html">Support</a>
+    </nav>
+  </div>
+
+  <div class="hero">
+    <div class="tag">
+      <span class="tag-eyebrow">INTERNAL STOCK &amp; JOB SYSTEM</span>
+      <h1>Track every <em>item</em>, every <em>request</em>, every job.</h1>
+      <p class="sub">Next Logistics keeps stock, locations, and builder requests in one place, built for one business, used by the whole crew.</p>
+      <div class="stamp-row">
+        <span class="stamp">STOCK LEVELS</span>
+        <span class="stamp">LOCATIONS</span>
+        <span class="stamp">BUILDER REQUESTS</span>
+      </div>
+    </div>
+  </div>
+
+  <section id="what">
+    <div class="section-head">
+      <span class="num">01</span>
+      <h2>What it does</h2>
+    </div>
+    <div class="grid">
+      <div class="ftag">
+        <span class="fnum">A</span>
+        <h3>Stock Tracking</h3>
+        <p>See what's in stock and how much, updated as items move in and out.</p>
+      </div>
+      <div class="ftag">
+        <span class="fnum">B</span>
+        <h3>Location Tracking</h3>
+        <p>Know exactly where stock is sitting, yard, site, or storage, at a glance.</p>
+      </div>
+      <div class="ftag">
+        <span class="fnum">C</span>
+        <h3>Builder Requests</h3>
+        <p>Builders log what they need on site. Office sees it and actions it fast.</p>
+      </div>
+    </div>
+  </section>
+
+  <div class="strip">
+    <section id="who">
+      <div class="section-head">
+        <span class="num">02</span>
+        <h2>Who it's for</h2>
+      </div>
+      <div class="rolewrap">
+        <div class="role">
+          <h3>Office Staff</h3>
+          <p>Manage stock levels, review incoming builder requests, and keep an accurate picture of what's on hand without chasing paper dockets.</p>
+        </div>
+        <div class="role">
+          <h3>Builders on Site</h3>
+          <p>Request materials straight from the job site, check what's available, and skip the back-and-forth phone calls to the office.</p>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <footer>
+    <span class="mono">NEXT LOGISTICS · INTERNAL USE ONLY</span>
+    <a href="support.html">Support &amp; Contact →</a>
+  </footer>
+
+</body>
+</html>

@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Support — Next Logistics</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --concrete:#2B2E2C;
+    --bone:#EDEAE2;
+    --site-orange:#E85C2B;
+    --timber:#B08968;
+    --steel:#3E5C68;
+    --ink:#1C1C1A;
+    --paper:#F7F4EC;
+    --line: rgba(28,28,26,0.14);
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'Inter', -apple-system, sans-serif;
+    line-height:1.6;
+  }
+  h1,h2{
+    font-family:'Oswald', sans-serif;
+    text-transform:uppercase;
+    letter-spacing:0.02em;
+    margin:0;
+    color:var(--concrete);
+  }
+  .mono{font-family:'IBM Plex Mono', monospace;}
+  a{color:var(--site-orange);}
+
+  .topbar{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:22px 6vw;
+    border-bottom:1px solid var(--line);
+  }
+  .topbar .mark{
+    font-family:'Oswald', sans-serif;
+    font-weight:700;
+    font-size:18px;
+    text-transform:uppercase;
+    letter-spacing:0.04em;
+    color:var(--ink);
+    text-decoration:none;
+  }
+  .topbar .mark span{color:var(--site-orange);}
+  .topbar nav a{
+    text-decoration:none;
+    font-size:13px;
+    font-weight:500;
+    margin-left:28px;
+    color:var(--concrete);
+    opacity:0.75;
+  }
+
+  .head{
+    padding:8vh 6vw 5vh;
+    max-width:760px;
+  }
+  .head .tag-eyebrow{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:12px;
+    color:var(--steel);
+    display:block;
+    margin-bottom:14px;
+  }
+  .head h1{
+    font-size:clamp(30px,4.5vw,44px);
+  }
+  .head p{
+    margin-top:16px;
+    font-size:16px;
+    opacity:0.82;
+    max-width:52ch;
+  }
+
+  main{
+    max-width:760px;
+    margin:0 auto;
+    padding:0 6vw 8vh;
+  }
+
+  .contact-card{
+    background:var(--bone);
+    border:1.5px solid var(--concrete);
+    border-radius:6px;
+    padding:30px 32px;
+    box-shadow:5px 5px 0 var(--concrete);
+    margin-bottom:56px;
+  }
+  .contact-card h2{font-size:18px; margin-bottom:8px;}
+  .contact-card p{margin:0 0 14px; font-size:14.5px; opacity:0.85;}
+  .contact-card .mono{
+    display:inline-block;
+    font-size:15px;
+    background:var(--paper);
+    border:1px dashed var(--concrete);
+    padding:8px 14px;
+    border-radius:4px;
+    color:var(--concrete);
+  }
+
+  .faq-head{
+    display:flex;
+    align-items:baseline;
+    gap:12px;
+    margin-bottom:22px;
+  }
+  .faq-head .num{
+    font-family:'IBM Plex Mono', monospace;
+    color:var(--site-orange);
+    font-size:14px;
+  }
+  .faq-head h2{font-size:22px;}
+
+  details{
+    border-bottom:1px solid var(--line);
+    padding:18px 0;
+  }
+  details summary{
+    cursor:pointer;
+    font-weight:600;
+    font-size:15.5px;
+    color:var(--concrete);
+    list-style:none;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+  }
+  details summary::-webkit-details-marker{display:none;}
+  details summary::after{
+    content:"+";
+    font-family:'IBM Plex Mono', monospace;
+    color:var(--site-orange);
+    font-size:18px;
+    margin-left:16px;
+  }
+  details[open] summary::after{content:"–";}
+  details p{
+    font-size:14.5px;
+    opacity:0.82;
+    margin:12px 0 0;
+    max-width:60ch;
+  }
+
+  footer{
+    padding:5vh 6vw 6vh;
+    border-top:1px solid var(--line);
+    text-align:center;
+  }
+  footer .mono{font-size:12px; opacity:0.6;}
+
+  @media (max-width:600px){
+    .topbar nav a{margin-left:14px;}
+  }
+</style>
+</head>
+<body>
+
+  <div class="topbar">
+    <a href="index.html" class="mark">NEXT<span>·</span>LOGISTICS</a>
+    <nav>
+      <a href="index.html">Home</a>
+    </nav>
+  </div>
+
+  <div class="head">
+    <span class="tag-eyebrow">SUPPORT</span>
+    <h1>Need a hand with the app?</h1>
+    <p>This page is for staff and builders using Next Logistics day to day. If something's not working or you can't find what you're after, get in touch below.</p>
+  </div>
+
+  <main>
+    <div class="contact-card">
+      <h2>Contact</h2>
+      <p>For login issues, bugs, or feature requests, reach out directly.</p>
+      <span class="mono">support@nextlogisticsci.com</span>
+    </div>
+
+    <div class="faq-head">
+      <span class="num">FAQ</span>
+      <h2>Common questions</h2>
+    </div>
+
+    <details open>
+      <summary>I can't log in, what do I do?</summary>
+      <p>Check you're using the login details given to you by the office. If you've forgotten your password or your account isn't working, contact support and we'll sort it out.</p>
+    </details>
+
+    <details>
+      <summary>How do I request materials as a builder?</summary>
+      <p>Open the app, go to Requests, and add the items and quantities you need. The office gets notified and will action it from their end.</p>
+    </details>
+
+    <details>
+      <summary>Why can't I see certain stock or locations?</summary>
+      <p>Access is set up per staff member. If something's missing that you need for your role, ask the office to update your permissions.</p>
+    </details>
+
+    <details>
+      <summary>The app isn't loading or is stuck, what now?</summary>
+      <p>Try closing and reopening the app first. If that doesn't fix it, check your internet connection. Still stuck? Email support with your device and what you were doing when it happened.</p>
+    </details>
+
+    <details>
+      <summary>Can I use this app if I don't work for the business?</summary>
+      <p>No. Next Logistics is built for internal use by this business only, it isn't a public inventory tool.</p>
+    </details>
+  </main>
+
+  <footer>
+    <span class="mono">NEXT LOGISTICS · INTERNAL USE ONLY</span>
+  </footer>
+
+</body>
+</html>
